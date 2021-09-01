@@ -15,10 +15,9 @@ public class ApplicationController {
 
   ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-  CountDownLatch countDownLatch = new CountDownLatch(1);
-
   @GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
   public GetResponse get() throws InterruptedException {
+    CountDownLatch countDownLatch = new CountDownLatch(1);
     GetResponse getResponse = new GetResponse();
     executorService.execute(() -> {
       try {
